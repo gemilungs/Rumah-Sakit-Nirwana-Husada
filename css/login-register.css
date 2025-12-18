@@ -1,0 +1,234 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: whitesmoke;
+  color: #0f172a;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px;
+  font-family: "Encode Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 28px;
+  align-items: stretch; /* ensure both columns match height */
+}
+
+/* make card/side fill the grid row height so they stay equal */
+.card, .side {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card, .side {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(12, 38, 63, 0.08);
+}
+
+.side {
+  background: linear-gradient(to right, #042a2b, #40826D);
+  color: white;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tab--active {
+  background: linear-gradient(to right, #042a2b, #40826D);
+  color: #fff;
+}
+
+.tab--muted {
+  background: transparent;
+  border: 1px solid rgba(11, 111, 177, 0.12);
+  color: #40826D;
+}
+
+label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6eef7;
+  background: #fbfdff;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+
+.btn-full {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 24px;
+  background: linear-gradient(to right, #042a2b, #40826D);
+  color: white;
+  border: none;
+}
+
+.btn-full:hover {
+  background: #1f785f;
+}
+
+.below-links { 
+  text-align: center; margin-top: 24px; 
+  position: relative;
+  z-index: 2; /* ensure links are above other elements */
+}
+
+.below-links a { 
+  color: #40826D; 
+  text-decoration: none;
+  font-weight: 600; 
+  pointer-events: auto; /* re-enable clicks if previously disabled */
+  display: inline-block;
+}
+    
+
+.below-links a:hover { 
+  color: #1f785f; 
+  text-decoration: underline; 
+  cursor: pointer;
+}
+
+    
+.strength {
+  height: 8px;
+  border-radius: 6px;
+  background: #eef3fb;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.strength i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f97316, #10b981);
+  transition: width 160ms ease, background 160ms ease;
+  will-change: width, background;
+}
+
+.gender-group { 
+  display:flex; 
+  gap:12px; 
+  align-items:center; 
+}
+
+/* gender option styles: hide native radio and style labels as buttons */
+.gender-option { position: relative; }
+.gender-option input[type="radio"] { 
+  position: absolute; 
+  opacity: 0; 
+  width: 1px; 
+  height: 1px; 
+  overflow: hidden; 
+}
+.gender-option label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6eef7;
+  background: #fbfdff;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+}
+.gender-option input[type="radio"]:checked + label {
+  background: linear-gradient(to right, #042a2b, #40826D);
+  color: #fff;
+  border-color: transparent;
+}
+.gender-option label:hover {
+  box-shadow: 0 4px 12px rgba(12,38,63,0.06);
+}
+
+textarea { 
+  min-height: 90px; 
+  resize: vertical; 
+}
+
+.form-note { 
+  font-size:12px; 
+  color:#6b7280; 
+  margin-top:6px; 
+}
+
+.position-relative .btn {
+  background: transparent;
+  border: none;
+  padding: 6px 10px;
+  font-size: 13px;
+  z-index: 3; /* ensure clickable above input */
+  cursor: pointer; /* indicate clickable */
+  pointer-events: auto;
+      }
+
+
+
+    /* Medium / small screens: stack columns into single column and adjust spacing */
+    @media (max-width: 992px) {
+      .wrap {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 18px;
+      }
+      .side {
+        order: 2;
+      }
+      main {
+        order: 1;
+      }
+      .card, .side {
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .card { margin: 0 auto; }
+      .tab { padding: 10px; font-size: 15px; }
+      .btn-full { padding: 12px; font-size: 15px; }
+    }
+
+    /* Extra small screens: reduce padding and font sizes for better fit */
+    @media (max-width: 576px) {
+      body {
+        padding: 12px;
+      }
+
+      .card, .side {
+        padding: 14px;
+      }
+
+      .tab { padding: 8px; font-size: 14px; }
+      .btn-full { padding: 10px; font-size: 15px; }
+      .wrap { gap: 12px; }
+    }
